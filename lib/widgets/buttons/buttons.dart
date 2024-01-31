@@ -112,6 +112,7 @@ class Button extends StatelessWidget {
         text: data.text,
         onTap: data.onTap,
         isEnabled: data.isEnabled,
+        width: data.width,
         isHug: data.isHug,
       ),
       // 'modal': _buildModalButton(context),

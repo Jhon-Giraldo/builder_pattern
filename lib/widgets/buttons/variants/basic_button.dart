@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_patron_builder/widgets/buttons/button_builder.dart';
 
 class BasicButton extends StatelessWidget {
   final String text;
@@ -21,6 +22,16 @@ class BasicButton extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ButtonWidgetBuilder.build(
+      ButtonBuilder(
+        key: const Key('basic-button'),
+      )
+          .setText(text)
+          .setIsHug(isHug)
+          .setWidth(width)
+          .setIsEnabled(isEnabled)
+          .setPrefixIcon(Icons.abc)
+          .setSuffixIcon(Icons.abc),
+    );
   }
 }
