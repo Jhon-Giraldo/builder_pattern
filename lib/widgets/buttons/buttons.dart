@@ -34,52 +34,6 @@ class Button extends StatelessWidget {
     );
   }
 
-  factory Button.modal({
-    required String text,
-    required VoidCallback onTap,
-    IconData? prefixIcon,
-    IconData? suffixIcon,
-    bool isEnabled = true,
-    bool isHug = false,
-    double? width,
-  }) {
-    return Button(
-      data: ButtonModel(
-        text: text,
-        type: 'modal',
-        onTap: onTap,
-        prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
-        isEnabled: isEnabled,
-        isHug: isHug,
-        width: width,
-      ),
-    );
-  }
-
-  factory Button.filter({
-    required String text,
-    required VoidCallback onTap,
-    IconData? prefixIcon,
-    IconData? suffixIcon,
-    bool isEnabled = true,
-    bool isHug = false,
-    double? width,
-  }) {
-    return Button(
-      data: ButtonModel(
-        text: text,
-        type: 'filter',
-        onTap: onTap,
-        prefixIcon: prefixIcon,
-        suffixIcon: suffixIcon,
-        isEnabled: isEnabled,
-        isHug: isHug,
-        width: width,
-      ),
-    );
-  }
-
   factory Button.error({
     required String text,
     required VoidCallback onTap,
@@ -115,8 +69,6 @@ class Button extends StatelessWidget {
         width: data.width,
         isHug: data.isHug,
       ),
-      // 'modal': _buildModalButton(context),
-      // 'filter': _buildFilterButton(context),
       // 'error': _buildErrorButton(context),
     };
 
