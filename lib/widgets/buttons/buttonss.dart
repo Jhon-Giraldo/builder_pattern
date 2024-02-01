@@ -1,71 +1,5 @@
 import 'package:flutter/material.dart';
 
-class ButtonBuilder {
-  ButtonBuilder({
-    required this.key,
-  });
-
-  Key key;
-  String text = '';
-  VoidCallback onTap = () {};
-  IconData? prefixIcon;
-  IconData? suffixIcon;
-  Icon? customSuffixIcon;
-  bool isEnabled = true;
-  bool isHug = true;
-  double? width;
-  Color? backgroundColor = Colors.white;
-
-  ButtonBuilder setText(String value) {
-    text = value;
-    return this;
-  }
-
-  ButtonBuilder setOnTap(VoidCallback callback) {
-    onTap = callback;
-    return this;
-  }
-
-  ButtonBuilder setPrefixIcon(IconData? value) {
-    prefixIcon = value;
-    return this;
-  }
-
-  ButtonBuilder setSuffixIcon(IconData? value) {
-    suffixIcon = value;
-    return this;
-  }
-
-  ButtonBuilder setCustomSuffixIcon(Icon? value) {
-    customSuffixIcon = value;
-    return this;
-  }
-
-  ButtonBuilder setIsEnabled(bool value) {
-    isEnabled = value;
-    return this;
-  }
-
-  ButtonBuilder setIsHug(bool value) {
-    isHug = value;
-    return this;
-  }
-
-  ButtonBuilder setWidth(double? value) {
-    width = value;
-    return this;
-  }
-
-  ButtonBuilder setBackgroundColor(Color? value) {
-    backgroundColor = value;
-    return this;
-  }
-
-  ButtonWidgetBuilder build() {
-    return ButtonWidgetBuilder._builder(this);
-  }
-}
-
 class ButtonWidgetBuilder extends StatelessWidget {
   final Key customKey;
   final String text;
@@ -78,21 +12,18 @@ class ButtonWidgetBuilder extends StatelessWidget {
   final Icon? customSuffixIcon;
   final Color? backgroundColor;
 
-  ButtonWidgetBuilder._builder(ButtonBuilder builder)
-      : customKey = builder.key,
-        text = builder.text,
-        onTap = builder.onTap,
-        prefixIcon = builder.prefixIcon,
-        suffixIcon = builder.suffixIcon,
-        customSuffixIcon = builder.customSuffixIcon,
-        isEnabled = builder.isEnabled,
-        isHug = builder.isHug,
-        backgroundColor = builder.backgroundColor,
-        width = builder.width;
-
-  factory ButtonWidgetBuilder.build(ButtonBuilder builder) {
-    return ButtonWidgetBuilder._builder(builder);
-  }
+  const ButtonWidgetBuilder(
+      {super.key,
+      required this.customKey,
+      required this.text,
+      required this.onTap,
+      this.prefixIcon,
+      this.suffixIcon,
+      required this.isEnabled,
+      required this.isHug,
+      this.width,
+      this.customSuffixIcon,
+      this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {

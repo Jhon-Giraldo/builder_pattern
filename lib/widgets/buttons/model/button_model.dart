@@ -9,6 +9,7 @@ class ButtonModel {
   final bool isEnabled;
   final bool isHug;
   final double? width;
+  final Color? backgroundColor;
 
   const ButtonModel({
     required this.text,
@@ -19,5 +20,6 @@ class ButtonModel {
     this.isEnabled = true,
     this.isHug = false,
     this.width,
+    this.backgroundColor,
   });
 }

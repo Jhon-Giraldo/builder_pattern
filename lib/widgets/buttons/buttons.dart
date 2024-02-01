@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_patron_builder/widgets/buttons/variants/basic_button.dart';
 
 import 'model/button_model.dart';
 
@@ -59,23 +58,67 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String type = data.type;
-
-    final Map<String, Widget> buttonsVariants = {
-      'basic': BasicButton(
-        text: data.text,
-        onTap: data.onTap,
-        isEnabled: data.isEnabled,
-        width: data.width,
-        isHug: data.isHug,
+    return InkWell(
+      key: key,
+      onTap: data.isEnabled ? data.onTap : null,
+      borderRadius: const BorderRadius.all(Radius.circular(100)),
+      child: Container(
+        width: data.width ?? (!data.isHug ? null : double.infinity),
+        margin: const EdgeInsets.symmetric(
+          horizontal: 4,
+          vertical: 4,
+        ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 4,
+          vertical: 4,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(100)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 0,
+              blurRadius: 4,
+              offset: const Offset(0, 2), // changes position of shadow
+            ),
+          ],
+          color: data.isEnabled ? data.backgroundColor : Colors.white,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Visibility(
+              visible: data.prefixIcon != null,
+              child: Icon(
+                data.prefixIcon,
+                size: 24,
+                color: data.isEnabled ? Colors.black : Colors.grey,
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Text(
+                  data.text,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: data.isEnabled ? Colors.black : Colors.grey,
+                  ),
+                ),
+              ),
+            ),
+            Visibility(
+              visible: data.suffixIcon != null,
+              child: Icon(
+                data.suffixIcon,
+                size: 24,
+                color: data.isEnabled ? Colors.black : Colors.grey,
+              ),
+            ),
+          ],
+        ),
       ),
-      // 'error': _buildErrorButton(context),
-    };
-
-    return buttonsVariants[type]!;
-
-    // return InkWell(
-    //   child: Container(),
-    // );
+    );
   }
 }
