@@ -15,9 +15,15 @@ class ButtonBuilder {
   bool isHug = true;
   double? width;
   Color? backgroundColor = Colors.white;
+  Color? textColor = Colors.black;
 
   ButtonBuilder setText(String value) {
     text = value;
+    return this;
+  }
+
+  ButtonBuilder setTextColor(Color? value) {
+    textColor = value;
     return this;
   }
 
@@ -77,6 +83,7 @@ class ButtonWidgetBuilder extends StatelessWidget {
   final double? width;
   final Icon? customSuffixIcon;
   final Color? backgroundColor;
+  final Color? textColor;
 
   ButtonWidgetBuilder._builder(ButtonBuilder builder)
       : customKey = builder.key,
@@ -88,6 +95,7 @@ class ButtonWidgetBuilder extends StatelessWidget {
         isEnabled = builder.isEnabled,
         isHug = builder.isHug,
         backgroundColor = builder.backgroundColor,
+        textColor = builder.textColor,
         width = builder.width;
 
   factory ButtonWidgetBuilder.build(ButtonBuilder builder) {
@@ -120,7 +128,8 @@ class ButtonWidgetBuilder extends StatelessWidget {
               offset: const Offset(0, 2), // changes position of shadow
             ),
           ],
-          color: isEnabled ? backgroundColor : Colors.white,
+          color:
+              isEnabled ? backgroundColor : backgroundColor?.withOpacity(0.5),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -141,7 +150,7 @@ class ButtonWidgetBuilder extends StatelessWidget {
                   text,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: isEnabled ? Colors.black : Colors.grey,
+                    color: isEnabled ? textColor : textColor?.withOpacity(0.5),
                   ),
                 ),
               ),

@@ -9,6 +9,8 @@ class BasicButton extends StatelessWidget {
   final bool isEnabled;
   final bool isHug;
   final double? width;
+  final Color? backgroundColor;
+  final Color? textColor;
 
   const BasicButton({
     Key? key,
@@ -19,6 +21,8 @@ class BasicButton extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.width,
+    this.backgroundColor,
+    this.textColor,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -30,8 +34,11 @@ class BasicButton extends StatelessWidget {
           .setIsHug(isHug)
           .setWidth(width)
           .setIsEnabled(isEnabled)
-          .setPrefixIcon(Icons.abc)
-          .setSuffixIcon(Icons.abc),
+          .setBackgroundColor(backgroundColor)
+          .setTextColor(textColor)
+          .setOnTap(onTap)
+          .setPrefixIcon(prefixIcon)
+          .setSuffixIcon(suffixIcon),
     );
   }
 }
